@@ -1,992 +1,669 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Md Kowsher</title>
+  <meta name="description" content="Md Kowsher — Research Scientist at Meta and PhD student at UCF working on multimodal LLMs, parameter-efficient fine-tuning, and efficient training.">
+  <meta name="author" content="Md Kowsher">
+  <link rel="icon" href="assets/img/bitbug_favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2328;
+      --muted: #59636e;
+      --link: #1a5fb4;
+      --accent: #b45309;
+      --rule: #e5e7eb;
+      --chip-bg: #eef2f7;
+      --chip-text: #334155;
+      --hl-bg: #fdf8ef;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f1115;
+        --text: #e6e8eb;
+        --muted: #9aa4b2;
+        --link: #7cb3ff;
+        --accent: #f0a14a;
+        --rule: #262a33;
+        --chip-bg: #1b2030;
+        --chip-text: #c3cbd8;
+        --hl-bg: #17150f;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f1115;
+      --text: #e6e8eb;
+      --muted: #9aa4b2;
+      --link: #7cb3ff;
+      --accent: #f0a14a;
+      --rule: #262a33;
+      --chip-bg: #1b2030;
+      --chip-text: #c3cbd8;
+      --hl-bg: #17150f;
+    }
 
-  <title>Kowsher's Homepage</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-  <!-- Favicons -->
-  <!-- <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
-  <link rel="shortcut icon" href="assets/img/bitbug_favicon.ico"/>
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 64px; }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    /* Top nav */
+    nav.top {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav.top .inner {
+      max-width: 880px; margin: 0 auto; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    nav.top .brand { font-weight: 700; color: var(--text); white-space: nowrap; }
+    nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
+    nav.top ul a { color: var(--muted); font-size: 15px; }
+    nav.top ul a:hover { color: var(--text); text-decoration: none; }
+    #theme-toggle {
+      background: none; border: 1px solid var(--rule); color: var(--muted);
+      border-radius: 6px; padding: 2px 8px; cursor: pointer; font: inherit; font-size: 14px;
+    }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    /* Header / bio */
+    header.hero {
+      display: grid; grid-template-columns: 1fr 200px; gap: 36px;
+      align-items: center; padding: 44px 0 16px;
+    }
+    header.hero h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 38px; margin: 0 0 4px; letter-spacing: -0.01em;
+    }
+    header.hero .role { color: var(--muted); margin: 0 0 16px; }
+    header.hero p { margin: 0 0 12px; }
+    .photo {
+      width: 200px; height: 200px; border-radius: 50%;
+      object-fit: cover; border: 1px solid var(--rule);
+      background: var(--chip-bg);
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-weight: 600; }
+    .links a::after { content: ""; }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    /* Sections */
+    section { padding-top: 28px; }
+    h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 24px; margin: 0 0 14px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule);
+    }
+    h3.year { font-size: 17px; color: var(--muted); margin: 22px 0 6px; font-weight: 600; }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.8.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    /* News */
+    ul.news { list-style: none; padding: 0; margin: 0; }
+    ul.news li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 4px 0; }
+    ul.news .date { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .news-more { display: none; }
+    .news-expanded .news-more { display: grid; }
+    .toggle-btn {
+      margin-top: 8px; background: none; border: none; padding: 0;
+      color: var(--link); font: inherit; cursor: pointer;
+    }
+
+    /* Publications */
+    .pub-note { color: var(--muted); font-size: 15px; margin: -4px 0 8px; }
+    .pub { padding: 10px 12px; margin: 0 -12px; border-radius: 8px; }
+    .pub.hl { background: var(--hl-bg); }
+    .pub .title { font-weight: 600; }
+    .pub .authors { color: var(--text); }
+    .pub .authors .me { font-weight: 700; }
+    .pub .venue { font-style: italic; color: var(--muted); }
+    .pub .badge {
+      display: inline-block; font-style: normal; font-size: 13px; font-weight: 700;
+      color: var(--accent); margin-left: 6px;
+    }
+    .pub .plinks { margin-top: 2px; font-size: 15px; }
+    .pub .plinks a { margin-right: 4px; }
+    .pub .plinks a:not(:last-child)::after { content: " /"; color: var(--muted); margin-left: 4px; }
+
+    /* Experience / education */
+    .entry { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 8px 0; }
+    .entry .org { font-weight: 600; }
+    .entry .when { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .entry .what { grid-column: 1 / -1; color: var(--muted); font-size: 16px; }
+
+
+    /* Affiliations strip */
+    .affil { padding-top: 8px; }
+    .affil-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 4px;
+    }
+    .affil-item { text-align: center; }
+    .affil-logo {
+      height: 64px; display: flex; align-items: center; justify-content: center;
+      background: #ffffff; border: 1px solid var(--rule); border-radius: 10px; padding: 10px;
+    }
+    .affil-logo img { max-height: 42px; max-width: 92px; object-fit: contain; }
+    .affil-logo .fallback { display: none; font-weight: 700; color: #1f2328; font-size: 15px; line-height: 1.2; }
+    .affil-logo.noimg img { display: none; }
+    .affil-logo.noimg .fallback { display: block; }
+    .affil-name { font-size: 14px; font-weight: 600; margin-top: 6px; line-height: 1.25; }
+    .affil-role { font-size: 13px; color: var(--muted); line-height: 1.25; }
+    .affil-when { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    ul.plain { margin: 0; padding-left: 20px; }
+    ul.plain li { padding: 2px 0; }
+
+    footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      nav.top ul { display: none; }
+      header.hero { grid-template-columns: 1fr; gap: 20px; padding-top: 28px; }
+      header.hero .photo-wrap { order: -1; }
+      .photo { width: 140px; height: 140px; }
+      header.hero h1 { font-size: 32px; }
+      ul.news li { grid-template-columns: 1fr; gap: 0; }
+      .entry { grid-template-columns: 1fr; }
+      .affil-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<nav class="top">
+  <div class="inner">
+    <a class="brand" href="#">Md Kowsher</a>
+    <ul>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#honors">Honors</a></li>
+      <li><a href="#service">Service</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Toggle dark mode">◐</button>
+  </div>
+</nav>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+<div class="wrap">
 
-      <div class="profile">
-        <img src="assets/img/profile-img-small.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Md Kowsher</a></h1>
-        <div class="social-links mt-3 text-center">
-          
-          <a href="https://scholar.google.com/citations?hl=en&user=dpqnHEAAAAAJ&view_op=list_works&sortby=pubdate#" target="_blank" class="google-scholar"><i class="bx bxl-google"></i></a>
-          <a href="https://www.linkedin.com/in/md-kowsher-b4b544107/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="assets/Resume(Kowsher).pdf" target="_blank" class="resume"><i class="bx bx-file"></i></a>
-          <!-- <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
-          <!-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
-        </div>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <!-- <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li> -->
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About Me</span></a></li>
-          <li><a href="#news" class="nav-link scrollto"><i class="bx bx-user"></i> <span>News</span></a></li>
-          <li><a href="#publications" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Publications</span></a></li>
-          <li><a href="#experience" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Experience</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#awards" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Achievement and Awards</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Academic Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <!-- <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
+  <!-- ================= Bio ================= -->
+  <header class="hero">
+    <div>
       <h1>Md Kowsher</h1>
-      <p>I <span class="typed" data-typed-items="am a researcher, am a coder, explore Graph NNs"></span></p>
-    </div>
-  </section> -->
-  <!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-	<section id="about" class="about">
-	  <div class="container">
-	    <div class="section-title">
-	      <h2>About Me</h2>
-	    </div>
-	
-	    <div class="row">
-	      <!-- Left: Profile image + university logos -->
-	      <div class="col-lg-4 d-flex flex-column align-items-center">
-	        <!-- Profile image -->
-	        <img src="assets/img/profile-img.jpg" class="img-fluid mb-3" alt="Profile Picture">
-	
-	        <!-- University logos side-by-side -->
-	        <div class="d-flex justify-content-center gap-3 flex-wrap mt-2">
-	          <img src="assets/img/ucf.png" alt="UCF Logo" style="height:70px;">
-	          <img src="assets/img/stevens.png" alt="Stevens Logo" style="height:70px;">
-	          <img src="assets/img/nstu.png" alt="NSTU Logo" style="height:95px; margin-top: -13px;">
-	        </div>
-	      </div>
-	
-	      <!-- Right: About text -->
-	      <div class="col-lg-8 pt-4 pt-lg-1 content">
-	        <h3><b>Student Researcher</b></h3>
-		<p class="fst-italic" style="margin-bottom: 2px;">
-		  I am a Research Assistant at the
-		  <a href="https://www.crcv.ucf.edu/" target="_blank" rel="noopener noreferrer"><strong>Center for Research in Computer Vision (CRCV), UCF</strong></a>,
-		  working with <a href="https://www.crcv.ucf.edu/chenchen/index.html" target="_blank" rel="noopener noreferrer">Dr. Chen Chen</a>.
-		  I am also affiliated with
-		  <a href="https://www.ucsb.edu/" target="_blank" rel="noopener noreferrer">the University of California, Santa Barbara (UCSB)</a>,
-		  working with <a href="https://web.ece.ucsb.edu/~zhengzhang/" target="_blank" rel="noopener noreferrer">Dr. Zheng Zhang</a>.
-		  I love exploring multimodal research that combines text, video, image, and audio.
-		</p>
-
-		
-		<p class="fst-italic" style="margin-bottom: 2px;">
-		  In summer 2025, I've joined <b>Meta</b> as a Multimodal LLM Intern. 
-		</p>
-		
-		<p class="fst-italic" style="margin-bottom: 2px;">
-		  Earlier, I interned at <b>Nokia Bell Labs</b> in 2024, focusing on LLMs' Research. From 2023 to 2024, I worked as an 
-		  <b>Alexa AI Researcher</b> and was the global 2nd place winner of the Alexa Social Bot Challenge-5, where we developed 
-		  conversational agents, modeled long dialogue contexts, and generated images from chat inputs.
-		</p>
-		
-		<p class="fst-italic" style="margin-bottom: 2px;">
-		  In 2022, I interned at <b>Amazon Music</b> as an Applied Scientist, working on music-related language models and monitoring systems.
-		</p>
-		
-		<p class="fst-italic" style="margin-bottom: 2px;">
-		  Before that, I worked as an AI Scientist at <b>Hishab Ltd.</b> on Bangla NLP (2020–2021).
-		</p>
-		
-		<p class="fst-italic" style="margin-bottom: 2px;">
-		  I completed my Master’s at <b>Stevens Institute of Technology</b> (2021–2023), focusing on NLP and deep learning.
-		</p>
-		
-		<p class="fst-italic" style="margin-bottom: 0;">
-		  I’m passionate about deep learning research and using AI to solve real-world problems.
-		</p>
-
-
-	      </div>
-	    </div>
-	  </div>
-
-
-	
-	<section id="job_exp" class="job_exp">
-	  <div class="container">
-	    <div class="logo-row-scroll" style="overflow-x: auto; white-space: nowrap; padding-bottom: 10px;">
-	      <img src="assets/img/meta.webp" alt="Meta Logo" style="height:55px; margin-right: 20px;">
-	      <img src="assets/img/nokia.png" alt="Nokia Logo" style="height:55px; margin-right: 20px;">
-	      <img src="assets/img/amazon.png" alt="Amazon Logo" style="height:44px; margin-right: 20px;">
-	      <img src="assets/img/dolby.svg" alt="Dolby Logo" style="height:40px; margin-right: 20px;">
-	      <img src="assets/img/alexa.png" alt="Alexa Logo" style="height:55px; margin-right: 22px;">
-	      <img src="assets/img/hishab.avif" alt="Hishab Logo" style="height:25px; margin-right: 23px;">
-	    </div>
-	  </div>
-	</section>
-
-
-
-
-      
-    </section><!-- End About Section -->
-
-        <!-- ======= News Section ======= -->
-        <section id="news" class="news" style="margin-top: -70px; padding-top: 0;">
-          <div class="container">
-    
-            <div class="section-title">
-              <h2>News</h2>
-    
-          <div class="row">
-              <div class="col-lg-12 pt-4 pt-lg-0 content">
-              <!--<div class="col-lg-12 pt-4 pt-lg-0 content" data-aos="fade-up">-->
-                <ul>
-		<li><i class="icofont-rounded"></i>10/2025:<a href="https://github.com/facebookresearch/SliceFine/" target="_blank">  Facebook Research  </a> has open-sourced the SliceFine project.  </li>		
-		<li><i class="icofont-rounded"></i>10/2025: Published my intern research paper,<a href="https://facebookresearch.github.io/SliceFine/" target="_blank"> SliceFine </a> at Meta. </li>	
-		<li><i class="icofont-rounded"></i>07/2025: Published My 1st US Patent <a href="https://patents.google.com/patent/US20250200362A1/en" target="_blank">US20250200362A1</a> </li>		
-		<li><i class="icofont-rounded"></i>06/2025: 4 Papers Accepted at <a href="https://2025.aclweb.org/" target="_blank">ACL, 2025</a> 2 Mains, 1 Finding, 1 Workshop </li>	
-		<li><i class="icofont-rounded"></i>05/2025: I have joined Multimodal Intern at  <a href="https://about.meta.com/" target="_blank">Meta</a> for the summer of 2025!</li>	
-		<li><i class="icofont-rounded"></i>04/2025: Served as the Volunteer Coordinator at <a href="https://2025.naacl.org/" target="_blank">NAACL, Albuquerque, NM, 2025</a></li>
-		<li><i class="icofont-rounded"></i>04/2025: Presented 2 papers at <a href="https://2025.naacl.org/" target="_blank">NAACL, Albuquerque, NM, 2025</a></li>				
-		<li><i class="icofont-rounded"></i>04/2025: Accepted 2 papers at <a href="https://2025.naacl.org/" target="_blank">NAACL, 2025</a></li>
-		<li><i class="icofont-rounded"></i>11/2024: Accepted paper at the <a href="https://coling2025.org/" target="_blank">31st COLING, 2025</a> (Oral)</li>
-		<li><i class="icofont-rounded"></i>10/2024: Accepted paper at the <a href="https://neurips.cc/Conferences/2024" target="_blank"> 38th NeurIPS FITML, 2025 </a>(Oral)</li>
-		<li><i class="icofont-rounded"></i>07/2024: Accepted paper at  <a href="https://www.nature.com/srep" target="_blank">Nature Scientific Report Journal</a>  </li>	
-		<li><i class="icofont-rounded"></i>08/2024: I have done my LLM internship at  <a href="https://en.wikipedia.org/wiki/Bell_Labs" target="_blank">Nokia Bell Labs</a> for the summer of 2024!</li>	
-		<li><i class="icofont-rounded"></i>01/2024: I have joined the program committee for the  <a href="https://sites.google.com/view/mm4sg/program-committee" target="_blank">MM4SG workshop</a> at THE WEB CONFERENCE 2024 in Singapore</li>	
-                <li><i class="icofont-rounded"></i>01/2024: I'm listed in the <a href="https://www.adscientificindex.com/?q=Md+Kowsher" target="_blank">World Scientists Rankings, 2024.</a> </li>
-                <li><i class="icofont-rounded"></i>12/2023: Reviewed papers in <a href="https://iclr.cc/" target="_blank">ICLR 2024.</a> </li>
-                <li><i class="icofont-rounded"></i>10/2023: Join the TPC for <a href="https://confmiet.org/" target="_blank">MIET</a>-2024!</a></li>
-                <li><i class="icofont-rounded"></i>10/2023: Accepted paper in EMNLP Workshops-2023</a></li>
-                <li><i class="icofont-rounded"></i>09/2023: Our team (NAM) won the second position in  <a href="https://www.amazon.science/alexa-prize/socialbot-grand-challenge/2022" target="_blank">Amazon Alexa Prize Social Bot Challenge 5.</a></li>
-                <li><i class="icofont-rounded"></i>08/2023: Reviewed 2 papers in <a href="https://2023.emnlp.org/" target="_blank">EMNLP 2023.</a> </li>
-                <li><i class="icofont-rounded"></i>08/2023: The paper of Alexa competition has been published in <a href="https://assets.amazon.science/63/27/5dd6b26e45b3810334ecb40238f8/nam-from-hybrid-dialogers-to-neural-responders.pdf" target="_blank">Amazon Scinece.</a></li>
-                <li><i class="icofont-rounded"></i>07/2023: Invited Talk <a href="https://confbim.com/invited-speakers/" target="_blank">International Conference on Big Data, IoT, and Machine Learning (BIM 2023).</a></li>
-                <li><i class="icofont-rounded"></i>07/2023: Awarded full membership in <a href="https://www.sigmaxi.org/members/member-directory?fn=Md&ln=Kowsher&disc=0&match=False" target="_blank">Sigma Xi</a> , the Scientific Research Honor Society.</li>
-               </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- End Services Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <!-- <section id="skills" class="skills section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">HTML <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">PHP <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Skills Section -->
-
-    
-
-    <!-- ======= Portfolio Section ======= -->
-    <!-- <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Portfolio Section -->
-<!-- ======= Publications Section ======= -->
-<!-- ======= Publications Section ======= -->
-<section id="publications" class="about section-bg">
-<style>
-  .section-title h2 {
-    position: relative;
-    padding-bottom: 2px;
-    margin-bottom: 6px;
-    font-weight: 700;
-  }
-
-  .subsection-title {
-    margin-top: 20px; /* controls spacing before 2025, 2024, etc. */
-    margin-bottom: 6px;
-    position: relative;
-    padding-bottom: 2px;
-    font-weight: 700;
-  }
-
-  .subsection-title::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 50px;
-    background: #0d6efd;
-    border-radius: 2px;
-  }
-
-  #publications .content > h3 {
-    margin-top: 6px;
-    margin-bottom: 6px;
-  }
-
-  #publications .content {
-    padding-top: 0px !important;
-  }
-
-  #publications .row {
-    margin-top: 4px !important;
-    margin-bottom: 4px !important;
-  }
-
-.btn-links {
-  margin-top: 4px;
-  margin-bottom: 3px; /* controls space before next paper */
-}
-
-</style>
-
-
-  <div class="container">
-    <div class="section-title">
-      <h2>Publications</h2>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12 pt-4 pt-lg-0 content">
-        <h3 class="subsection-title">Under Review</h3>
-        <strong>SliceFine: The Universal Winning-Slice Hypothesis for Pretrained Networks</strong>
-        <div><em>ICLR 2026 (under review)</em></div>
-        <strong>Md Kowsher</strong>, Ali O. Polat, Ehsan Mohammady Ardehaly, Mehrdad Salehi, Zia Ghiasi, Prasanth Murali, Chen Chen
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2510.08513" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/facebookresearch/SliceFine" target="_blank">Code</a>
-        </div>
-        <strong>FlowNIB: An Information Bottleneck Analysis of Bidirectional vs. Unidirectional Language Models</strong>
-        <div><em>ICLR 2026 (under review)</em></div>
-        <strong>Md Kowsher</strong>, Nusrat Jahan Prottasha, Shiyun Xu, Shetu Mohanto, Ozlem Garibay, Niloofar Yousefi, Chen Chen
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2506.00859" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/BidiVsUniLM" target="_blank">Code</a>
-        </div>
-        <strong>Changes by Butterflies: Farsighted Forecasting with Group Reservoir Transformer</strong>
-	<div></div>
-        <strong>Md Kowsher</strong>, Abdul Rafae Khan, Jia Xu
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2402.09573" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2402.09573" target="_blank">Code</a>
-        </div>
-      </div>
-
-      <div class="col-lg-12 pt-4 pt-lg-0 content">
-        <h3 class="subsection-title">2025</h3>
-        <strong>Infinite reservoir transformer</strong>
-        <div><em>US Patent, Patent No. US20250200362A1</em></div>
-        Jia Xu, <strong>Md Kowsher</strong>
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://patentimages.storage.googleapis.com/94/2d/f1/1cf796fe564482/US20250200362A1.pdf" target="_blank">Patent</a>
-        </div>
-
-        <br />
-        <strong>Predicting Through Generation: Why Generation Is Better for Prediction</strong>
-        <div><em>ACL 2025 (Main)</em></div>
-        <strong>Md Kowsher</strong>, Nusrat Jahan Prottasha, Prakash Bhat, Chun-Nam Yu, Mojtaba Soltanalian, Ivan Garibay, Ozlem Garibay, Chen Chen, Niloofar Yousefi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2502.17817" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/PredGen" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>RoCoFT: Efficient Finetuning of Large Language Models with Row-Column Updates</strong>
-        <div><em>ACL 2025 (Main)</em></div>
-        <strong>Md Kowsher</strong>, Tara Esmaeilbeig, Chun-Nam Yu, Chen Chen, Mojtaba Soltanalian, Niloofar Yousefi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2410.10075" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/RoCoFT" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>TituLLMs: A Family of Bangla LLMs with Comprehensive Benchmarking</strong>
-        <div><em>ACL 2025 (Findings)</em></div>
-        Shahriar Kabir Nahin, Rabindra Nath Nandi, Sagor Sarker, Quazi Sarwar Muhtaseem, <strong>Md Kowsher</strong>, Apu Chandraw Shill, Md Ibrahim, Mehadi Hasan Menon, Tareq Al Muntasir, Firoj Alam
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2502.11187" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/hishab-nlp/titulm" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>LLM-Mixer: Multiscale Mixing in LLMs for Time Series Forecasting</strong>
-        <div><em>ACL 2025 (TRL Workshop)</em></div>
-        <strong>Md Kowsher</strong>, Md Shohanur Islam Sobuj, Nusrat Jahan Prottasha, E Alejandro Alanis, Ozlem Ozmen Garibay, Niloofar Yousefi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2410.11674" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/LLMMixer" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>Does Self-Attention Need Separate Weights in Transformers?</strong>
-        <div><em>NAACL 2025</em></div>
-        <strong>Md Kowsher</strong>, Nusrat Jahan Prottasha, Chun-Nam Yu, Ozlem Ozmen Garibay, Niloofar Yousefi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2412.00359" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://huggingface.co/Kowsher/shared-weight-bert-based" target="_blank">Code</a>
-        </div>
-	      
-        <br />
-        <strong>BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting</strong>
-        <div><em>NAACL 2025</em></div>
-        Mohammad Jahid Ibna Basher, <strong>Md Kowsher</strong>, Md Saiful Islam, Rabindra Nath Nandi, Nusrat Jahan Prottasha, Mehadi Hasan Menon, Tareq Al Muntasir, Shammur Absar Chowdhury, Firoj Alam, Niloofar Yousefi, Ozlem Ozmen Garibay
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2502.05729" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/hishab-nlp/BnTTS" target="_blank">Code</a>
-        </div>
-
-	      
-        <br />
-        <strong>Propulsion: Steering LLM with Tiny Fine-Tuning</strong>
-        <div><em>COLING 2025 (Oral)</em></div>
-        <strong>Md Kowsher</strong>, Nusrat Jahan Prottasha, Prakash Bhat
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2409.10927" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/Propulsion" target="_blank">Code</a>
-        </div>
-      </div>
-
-      <div class="col-lg-12 pt-4 pt-lg-0 content">
-        <h3 class="subsection-title">2024</h3>
-        <strong>Parameter-Efficient Fine-Tuning of Large Language Models using Semantic Knowledge Tuning</strong>
-        <div><em>Scientific Reports (Nature Journal)</em></div>
-        Nusrat Jahan Prottasha, Md. Shohanur Islam Sobuj, Asif Mahmud, Prakash Bhat, <strong>Md Kowsher</strong>
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/SKTuning" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/SKTuning" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>RoCoFT: Efficient Finetuning of Large Language Models with Row-Column Updates</strong>
-        <div><em>NeurIPS FITML 2024</em></div>
-        <strong>Md Kowsher</strong>, Tara Esmaeilbeig, Chun-Nam Yu, Chen Chen, Mojtaba Soltanalian, Niloofar Yousefi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/abs/2410.10075" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/RoCoFT" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>L-TUNING: Synchronized Label Tuning for Prompt and Prefix in Large Language Models</strong>
-        <div><em>ICLR Tiny Papers Track</em></div>
-        <strong>Md Kowsher</strong>, Md. Shohanur Islam Sobuj, Asif Mahmud, Nusrat Jahan Prottasha, Prakash Bhat
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://www.researchgate.net/publication/377080191" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://github.com/Kowsher/L-Tuning/" target="_blank">Code</a>
-        </div>
-      </div>
-
-      <div class="col-lg-12 pt-4 pt-lg-0 content">
-        <h3 class="subsection-title">2023</h3>
-        <strong>Contrastive Learning for Universal Zero-Shot NLI with Cross-Lingual Sentence Embeddings</strong>
-        <div><em>EMNLP Workshops 2023</em></div>
-        <strong>Md Kowsher</strong>, Abdul As Sami, Anupam Kumar Bairagi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://aclanthology.org/2023.mrl-1.18.pdf" target="_blank">Paper</a>
-        </div>
-
-        <br />
-        <strong>From Hybrid Dialogers to Neural Responders</strong>
-        <div><em>Amazon Science</em></div>
-        João Luís Lins, Nikhil Reddy, Abdul Rafae Khan, <strong>Md Kowsher</strong>, Abhijeet Gusain, Yeshwanth Reddy, Xuting Tang, Preet Jhanglani, Nusrat Zahan, Mengjiao Zhang, Yu Yu, Darshil Shah, Jia Xu
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://assets.amazon.science/63/27/5dd6b26e45b3810334ecb40238f8/nam-from-hybrid-dialogers-to-neural-responders.pdf" target="_blank">Paper</a>
-        </div>
-
-        <br />
-        <strong>Impact Learning: A Learning Method from Feature’s Impact and Competition</strong>
-        <div><em>Journal of Computational Science (Elsevier)</em></div>
-        Nusrat Jahan Prottasha, Saydul Akbar Murad, <strong>Md Kowsher</strong>, Apurba Adhikary, Sujit Biswas, Anupam Kumar Bairagi
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://arxiv.org/pdf/2211.02263.pdf" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://pypi.org/project/ImpactLearning/" target="_blank">Code</a>
-        </div>
-
-        <br />
-        <strong>Bangla-BERT: Transformer-Based Efficient Model for Transfer Learning and Language Understanding</strong>
-        <div><em>IEEE Access</em></div>
-        <strong>Md Kowsher</strong>, Abdullah As Sami, Nusrat Jahan Prottasha, Mohammad Shamsul Arefin, Pranab Kumar Dhar, Takeshi Koshiba
-        <div class="btn-links">
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9852438" target="_blank">Paper</a>
-          <a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="https://huggingface.co/Kowsher/bangla-bert" target="_blank">Code</a>
-        </div>
+      <p class="role">Research Scientist, Meta &nbsp;·&nbsp; PhD Student, University of Central Florida</p>
+      <p>
+        I am a Research Scientist at <b>Meta</b>, where I work on multimodal and agentic LLMs for
+        Facebook Trust &amp; Safety, focusing on contextual understanding and reasoning.
+        I am also a PhD student in Computer Science at the
+        <a href="https://www.crcv.ucf.edu/" target="_blank" rel="noopener">Center for Research in Computer Vision (CRCV), UCF</a>,
+        advised by <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" rel="noopener">Prof. Chen Chen</a>.
+      </p>
+      <p>
+        My research focuses on <b>efficient adaptation of large models</b> — parameter-efficient fine-tuning,
+        mixture-of-experts, and memory-efficient training — and on <b>multimodal learning</b> across text, image, and video.
+      </p>
+      <p>
+        Previously, I was an ML Research Intern at <b>Apple</b> (2026), a Multimodal LLM Intern at <b>Meta</b> (2025),
+        a Research Scientist Intern at <b>Nokia Bell Labs</b> (2024), an <b>Amazon Alexa Prize</b> Researcher (2022–2023, 2nd place in SocialBot Grand Challenge 5), and an Applied Scientist Intern at <b>Amazon</b> (2022).
+        I received my MSc in Computer Science from Stevens Institute of Technology, advised by Prof. Jia Xu.
+      </p>
+      <div class="links">
+        <a href="mailto:ga.kowsher@gmail.com">Email</a>
+        <a href="assets/Resume_Kowsher.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="https://scholar.google.com/citations?user=dpqnHEAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/Kowsher" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/Kowsher" target="_blank" rel="noopener">Hugging Face</a>
+        <a href="https://www.linkedin.com/in/md-kowsher-b4b544107/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-  </div>
-</section>
-  <!-- End Publication Section -->
-
-
-
-<!-- ======= Experience Section (Work + Education + Research) ======= -->
-<section id="experience" class="resume">
-  <div class="container">
-    <div class="section-title">
-      <h2>Experience</h2>
+    <div class="photo-wrap">
+      <img class="photo" src="assets/img/profile.jpg" alt="Md Kowsher"
+           onerror="this.onerror=null;this.src='assets/img/profile-img.jpg';">
     </div>
+  </header>
 
-    <div class="row">
-      <!-- Left Column: Work Experience -->
-      <div class="col-lg-6" data-aos="fade-up">
-        <h3 class="resume-title">Work Experience</h3>
 
-        <div class="resume-item">
-          <h4>Multimodal LLM Intern</h4>
-          <h5>May 2025 - Present</h5>
-          <p><em>Meta, Menlo Park, CA.</em></p>
-          <p><strong>Advisors</strong>: Dr. Ali Polat</p>
-          <ul><li>PEFT and LLM training</li></ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Research Scientist Intern in LLM</h4>
-          <h5>June 2024 - Aug, 2024</h5>
-          <p><em>Bell Labs, Nokia, NJ, USA.</em></p>
-          <p><strong>Advisors</strong>: Dr. Chun-Nam Yu</p>
-          <ul><li>PEFT and LLM training</li></ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Applied Scientist Intern</h4>
-          <h5>May. 2022 - Aug, 2022</h5>
-          <p><em>Amazon, Seattle, WA, USA.</em></p>
-          <p><strong>Advisors</strong>: Dr. E. Alejandro Alanis</p>
-          <ul><li>NLP model monitoring system.</li></ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>AI Scientist</h4>
-          <h5>April. 2020 - Aug, 2021</h5>
-          <p><em>Hishab Ltd, Saarland, Germany</em></p>
-          <p><strong>Advisors</strong>: Dr. Michael Schmitz</p>
-          <ul>
-            <li>AI-driven solutions for conversational agents.</li>
-            <li>Developed machine learning models for NLP.</li>
-            <li>Collaborated with clients to understand their business needs and translate them into AI solutions.</li>
-          </ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>AI Engineer Intern</h4>
-          <h5>Nov. 2019 - March, 2020</h5>
-          <p><em>NKSoft, Dallas, Texas, USA. (Remote)</em></p>
-          <ul><li>Contributed to the development of a natural language processing module for chatbot application.</li></ul>
-        </div>
+  <!-- ================= Affiliations ================= -->
+  <section class="affil" id="affiliations">
+    <div class="affil-grid">
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/meta.webp" alt="Meta logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Meta</span></div>
+        <div class="affil-name">Meta</div>
+        <div class="affil-role">Research Scientist · Intern</div>
+        <div class="affil-when">2025 – Present</div>
       </div>
-
-      <!-- Right Column: Education and Research -->
-      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="resume-title">Education</h3>
-
-        <div class="resume-item">
-          <h4>MSc, Computer Science</h4>
-          <h5>Sept. 2021 - Sept. 2023</h5>
-          <p><em>Stevens Institute of Technology, NJ, USA</em></p>
-          <p><strong>Advisors</strong>: Prof. Jia Xu</p>
-          <ul><li>Reservoir Transformer to handle long sequence for LM and time series.</li></ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>BSc, Applied Mathematics</h4>
-          <h5>April 2015 - Aug. 2019</h5>
-          <p><em>Noakhali Science and Technology University, Noakhali, Bangladesh</em></p>
-          <p><strong>Advisors</strong>: Prof. Md Jashim Uddin</p>
-          <ul><li>Deep Learning for Bangla chatbot system.</li></ul>
-        </div>
-
-        <h3 class="resume-title">Research Experience</h3>
-
-        <div class="resume-item">
-          <h4>Research Assistant</h4>
-          <h5>Aug. 2024 - Present</h5>
-          <p><em>Center for Research in Computer Vision, UCF, FL, USA.</em></p>
-          <p><strong>Advisor</strong>: Prof. Chen Chen</p>
-          <ul><li>Conducted cutting-edge research in Vision and Language modeling.</li></ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Graduate Research Assistant</h4>
-          <h5>Aug. 2024 - Present</h5>
-          <p><em>University of Central Florida, FL, USA.</em></p>
-          <p><strong>Advisor</strong>: Prof. Niloofar Yousefi</p>
-          <ul><li>Conducted cutting-edge research in theoretical deep learning and LLM.</li></ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Alexa Prize Researcher</h4>
-          <h5>Jan. 2022 - June 2022</h5>
-          <p><em>Amazon, Remote, USA.</em></p>
-          <p><strong>Advisor</strong>: Prof. Jia Xu</p>
-          <ul>
-            <li>Won second place in the Alexa competition.</li>
-            <li>Conducted cutting-edge research in Natural Language Processing (NLP) and LLM for Amazon’s Alexa.</li>
-          </ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Graduate Research Assistant</h4>
-          <h5>Sept. 2021 - Present</h5>
-          <p><em>Stevens Institute of Technology, NJ, USA.</em></p>
-          <p><strong>Advisor</strong>: Prof. Jia Xu</p>
-          <ul>
-            <li>Conducted cutting-edge research in deep learning and NLP.</li>
-            <li>Proposed a novel Reservoir Transformer architecture for enhancing performance of sequential data.</li>
-          </ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>AI and NLP Research Intern</h4>
-          <h5>May. 2018 - Sept. 2019</h5>
-          <p><em>Global Emerging Technology Networks, Dhaka, Bangladesh</em></p>
-          <ul><li>Conducted research on Bengali language processing for Bangla Chatbot and sentiment analysis.</li></ul>
-        </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/apple.png" alt="Apple logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Apple</span></div>
+        <div class="affil-name">Apple</div>
+        <div class="affil-role">ML Research Intern</div>
+        <div class="affil-when">Summer 2026</div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/ucf.png" alt="UCF logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">UCF</span></div>
+        <div class="affil-name">UCF · CRCV</div>
+        <div class="affil-role">PhD Student</div>
+        <div class="affil-when">2024 – Present</div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/nokia.png" alt="Nokia Bell Labs logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Nokia Bell Labs</span></div>
+        <div class="affil-name">Nokia Bell Labs</div>
+        <div class="affil-role">Research Scientist Intern</div>
+        <div class="affil-when">Summer 2024</div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/alexa.png" alt="Alexa Prize logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Alexa Prize</span></div>
+        <div class="affil-name">Amazon Alexa Prize</div>
+        <div class="affil-role">Researcher · 2nd Place</div>
+        <div class="affil-when">2022 – 2023</div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/amazon.png" alt="Amazon logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Amazon</span></div>
+        <div class="affil-name">Amazon</div>
+        <div class="affil-role">Applied Scientist Intern</div>
+        <div class="affil-when">Summer 2022</div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/stevens.png" alt="Stevens logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Stevens</span></div>
+        <div class="affil-name">Stevens Institute of Technology</div>
+        <div class="affil-role">MSc · Research Assistant</div>
+        <div class="affil-when">2021 – 2024</div>
+      </div>
+      <div class="affil-item">
+        <div class="affil-logo"><img src="assets/img/hishab.avif" alt="Hishab logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Hishab</span></div>
+        <div class="affil-name">Hishab</div>
+        <div class="affil-role">AI Scientist</div>
+        <div class="affil-when">2020 – 2021</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ======= Resume Download Section ======= -->
-<section id="resume-download" class="resume">
-  <div class="container">
-    <div class="section-title">
-      <h2>Resume</h2>
-      <p>Click <a href="assets/Resume_Kowsher.pdf" target="_blank" class="resume">here</a> to download my full Resume</p>
+  <!-- ================= News ================= -->
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news" id="news-list">
+      <li><span class="date">Sep 2026</span><span><a href="#p-token">Token Hypothesis</a> accepted at <b>NeurIPS 2026</b>.</span></li>
+      <li><span class="date">Aug 2026</span><span><a href="#p-monkeyjump">Monkey Jump</a> accepted at <b>EMNLP 2026</b> (Main).</span></li>
+      <li><span class="date">May 2026</span><span>Joined <b>Apple</b> (Cupertino) as an ML Research Intern for summer 2026.</span></li>
+      <li><span class="date">May 2026</span><span><a href="#p-lime">LiME</a> (<b>Spotlight</b>) and <a href="#p-slicefine">SliceFine</a> accepted at <b>ICML 2026</b>.</span></li>
+      <li><span class="date">2026</span><span>Serving as an <b>Area Chair</b> for ACL Rolling Review (ARR).</span></li>
+      <li><span class="date">Jan 2026</span><span><a href="#p-flownib">FlowNIB</a> accepted at <b>ICLR 2026</b>.</span></li>
+      <li><span class="date">Oct 2025</span><span>Joined <b>Meta</b> as a full-time Research Scientist.</span></li>
+      <li><span class="date">Oct 2025</span><span><a href="https://github.com/facebookresearch/SliceFine" target="_blank" rel="noopener">SliceFine</a>, from my Meta internship, open-sourced by Facebook Research.</span></li>
+      <li class="news-more"><span class="date">Jul 2025</span><span>My first US patent application published: <a href="https://patents.google.com/patent/US20250200362A1/en" target="_blank" rel="noopener">Infinite Reservoir Transformer</a>.</span></li>
+      <li class="news-more"><span class="date">May 2025</span><span>Four papers accepted at <b>ACL 2025</b> (2 Main, 1 Findings, 1 Workshop).</span></li>
+      <li class="news-more"><span class="date">May 2025</span><span>Joined <b>Meta</b> as a Multimodal LLM Intern.</span></li>
+      <li class="news-more"><span class="date">Apr 2025</span><span>Presented two papers and served as Volunteer Coordinator at <b>NAACL 2025</b>; received the NAACL Travel Award.</span></li>
+      <li class="news-more"><span class="date">Nov 2024</span><span><a href="#p-propulsion">Propulsion</a> accepted at <b>COLING 2025</b> (Oral).</span></li>
+      <li class="news-more"><span class="date">Oct 2024</span><span><a href="#p-rocoft">RoCoFT</a> accepted at the <b>NeurIPS 2024 FITML</b> workshop (Oral).</span></li>
+      <li class="news-more"><span class="date">Aug 2024</span><span>Started my PhD at UCF with the ORCGS Doctoral Fellowship.</span></li>
+      <li class="news-more"><span class="date">Jun 2024</span><span>Joined <b>Nokia Bell Labs</b> as a Research Scientist Intern.</span></li>
+      <li class="news-more"><span class="date">Sep 2023</span><span>Our team won <b>2nd place</b> in the Amazon Alexa Prize SocialBot Grand Challenge 5.</span></li>
+    </ul>
+    <button class="toggle-btn" id="news-toggle">Show older news ↓</button>
+  </section>
+
+  <!-- ================= Publications ================= -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <p class="pub-note">Highlighted papers are representative. Full list on <a href="https://scholar.google.com/citations?user=dpqnHEAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+
+    <h3 class="year">2026</h3>
+
+    <div class="pub hl" id="p-token">
+      <div class="title">Where You Backpropagate Matters: Token Hypothesis for Memory-Efficient Fine-Tuning</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Chen Chen</div>
+      <div class="venue">NeurIPS 2026</div>
     </div>
-  </div>
-</section>
 
-
- <!-- ======= Services Section ======= -->
-<section id="awards" class="awards">
-  <div class="container">
-    <div class="section-title">
-      <h2>Achievement and Awards</h2>
-      <!-- <p>1</p> -->
-    </div>
-    <div class="row">
-      <div class="col-lg-12 pt-4 pt-lg-0 content">
-        <ul>
-	<li><i class="icofont-rounded-right"></i> NAACL Travel Award, 2025</li>
-	<li><i class="icofont-rounded-right"></i> ORCGS Fellowship, UCF, 2024</li>
-          <li><i class="icofont-rounded-right"></i> Won the second place in Alexa Prize Social Bot Challenge 5, Amazon, USA, 2023</li>
-          <li><i class="icofont-rounded-right"></i> Awarded Full Membership, Sigma Xi, The Scientific Research Honor Society, USA, 2023</li>
-          <li><i class="icofont-rounded-right"></i> Graduate Fellowship Award (Tuition fee & stipend), Stevens Institute of Technology, USA, 2022</li>
-          <li><i class="icofont-rounded-right"></i> Scientist of the Year Award, Global Innovation & Excellence Award, India, 2021</li>
-          <li><i class="icofont-rounded-right"></i> Best Paper Award, In. Con. on Networking, Information Systems, ACM, Moscow, 2021, 2023</li>
-          <li><i class="icofont-rounded-right"></i> Best Paper Award, In. Con. on Computer and Communications, ACM, Singapore, 2021</li>
-          <li><i class="icofont-rounded-right"></i> Best Paper Award, In. Con. on Cyber Security and Computer Science, Springer, 2021</li>
-          <li><i class="icofont-rounded-right"></i> Top Wining Award, Coronathon-19, Hackathon on Combating the Coronavirus, Bangladesh, 2021</li>
-          <li><i class="icofont-rounded-right"></i> Best Paper Award, In. Con. on Computer, Communication, Chemical, Materials & Electronic Engineering, IEEE, 2021</li>
-          <li><i class="icofont-rounded-right"></i> Champion Award Robi r-ventures 2.0, Robi Axiata Limited, 2021</li>
-          <li><i class="icofont-rounded-right"></i> National BASIS ICT Award, Bangladesh Association of Software and Information Services, 2021</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section><!-- End award Section -->
-
-
-	  
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Academic Services</h2>
-          <!-- <p>1</p> -->
-        </div>
-
-        <div class="col-lg-12 pt-4 pt-lg-0 content"><h3>Conference Reviewer</h3></div>
-        <div class="col-lg-12 pt-4 pt-lg-0 content">
-          <ul>
-	<li><i class="icofont-rounded-right"></i>ACL, 2025   </li>
-	<li><i class="icofont-rounded-right"></i>NAACL, 2025    </li>
-          <li><i class="icofont-rounded-right"></i>EMNLP, 2024    </li>
-          <li><i class="icofont-rounded-right"></i>Neurips, 2024  </li>
-          <li><i class="icofont-rounded-right"></i>EMNLP, 2023    </li>
-          <li><i class="icofont-rounded-right"></i>ICLR, 2023    </li>
-          <li><i class="icofont-rounded-right"></i>ICEICT, 2022, 2023</li>
-          <li><i class="icofont-rounded-right"></i>ICDM, 2023</li>
-          <li><i class="icofont-rounded-right"></i>ICCIDM, 2022, 2021</li>
-          <li><i class="icofont-rounded-right"></i>ICMLIS, 2022</li>
-          <li><i class="icofont-rounded-right"></i>ICSECS, 2021</li>
-          <li><i class="icofont-rounded-right"></i>ICoCSIM, 2021</li>
-          </ul>
-        </div>
-        <div class="col-lg-12 pt-4 pt-lg-0 content"><h3>Journal Reviewer</h3></div>
-        <div class="col-lg-12 pt-4 pt-lg-0 content">
-          <ul>
-          <li><i class="icofont-rounded-right"></i>Scientific Reports, Nature, 2023    </li>
-          <li><i class="icofont-rounded-right"></i>IEEE Access, IEEE, 2022, 2023</li>
-          <li><i class="icofont-rounded-right"></i>Electronics, MDPI, 2022, 2023</li>
-
-          <li><i class="icofont-rounded-right"></i>Visual Computing for Industry, Biomedicine, and Art, Springer Journal, 2022, 2023    </li>
-          <li><i class="icofont-rounded-right"></i>Big Data and Information Analytics , Springer, 2022, 2023</li>
-          <li><i class="icofont-rounded-right"></i>Applied Artificial Intelligence,Taylor and Francis, 2022, 2023</li>
-
-
-
-          <li><i class="icofont-rounded-right"></i>Sensors, MDPI, 2022, 2023</li>
-          <li><i class="icofont-rounded-right"></i>Applied Sciences, MDPI, 2022, 2023</li>
-
-        </ul>
-        </div>
-        <!-- <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-        </div> -->
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <!-- <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Testimonials Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <!-- <p>Contact me</p> -->
-        </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>UCF, FL, USA</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>ga.kowsher@gmail.com</p>
-              </div>
-
-              <!-- <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>My Phone Number</p>
-              </div> -->
-
-              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
-            </div>
-
-          </div>
-
-          <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div> -->
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; <span>Md Kowsher (2025)</span>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        
+    <div class="pub hl" id="p-lime">
+      <div class="title">LiME: Lightweight Mixture of Experts for Efficient Multimodal Multi-task Learning</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Haris Mansoor, Nusrat Jahan Prottasha, Ozlem Garibay, Victor Zhu, Zhengping Ji, Chen Chen</div>
+      <div class="venue">ICML 2026 <span class="badge">Spotlight</span></div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2604.02338" target="_blank" rel="noopener">paper</a>
+        <a href="https://kowsher.github.io/LiME/" target="_blank" rel="noopener">project</a>
+        <a href="https://github.com/Kowsher/LiME" target="_blank" rel="noopener">code</a>
+        <a href="https://huggingface.co/datasets/Kowsher/MMT-47" target="_blank" rel="noopener">dataset</a>
       </div>
     </div>
-  </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div class="pub hl" id="p-slicefine">
+      <div class="title">SliceFine: The Universal Winning-Slice Hypothesis for Pretrained Networks</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Ali O. Polat, Prasanth Murali, Ehsan Mohammady Ardehaly, Chen Chen</div>
+      <div class="venue">ICML 2026</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2510.08513" target="_blank" rel="noopener">paper</a>
+        <a href="https://facebookresearch.github.io/SliceFine/" target="_blank" rel="noopener">project</a>
+        <a href="https://github.com/facebookresearch/SliceFine" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+    <div class="pub" id="p-monkeyjump">
+      <div class="title">Monkey Jump: MoE-Style PEFT for Efficient Multi-Task Learning</div>
+      <div class="authors">Nusrat Jahan Prottasha, <span class="me">Md Kowsher</span>, Chun-Nam Yu, Chen Chen, Ozlem Garibay</div>
+      <div class="venue">EMNLP 2026 (Main)</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2601.06356" target="_blank" rel="noopener">paper</a>
+        <a href="https://nusrat-prottasha.github.io/MonkeyJump/" target="_blank" rel="noopener">project</a>
+        <a href="https://github.com/Nusrat-Prottasha/MonkeyJump" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <div class="pub hl" id="p-flownib">
+      <div class="title">FlowNIB: An Information Bottleneck Analysis of Bidirectional vs. Unidirectional Language Models</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Nusrat Jahan Prottasha, Shiyun Xu, Shetu Mohanto, Chen Chen, Niloofar Yousefi, Ozlem Garibay</div>
+      <div class="venue">ICLR 2026</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2506.00859" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/Kowsher/BidiVsUniLM" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
 
+    <h3 class="year">2025</h3>
+
+    <div class="pub hl" id="p-predgen">
+      <div class="title">Predicting Through Generation: Why Generation Is Better for Prediction</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Nusrat Jahan Prottasha, Prakash Bhat, Chun-Nam Yu, Mojtaba Soltanalian, Ivan Garibay, Ozlem Garibay, Chen Chen, Niloofar Yousefi</div>
+      <div class="venue">ACL 2025 (Main)</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2502.17817" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/Kowsher/PredGen" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub hl" id="p-rocoft">
+      <div class="title">RoCoFT: Efficient Finetuning of Large Language Models with Row-Column Updates</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Tara Esmaeilbeig, Chun-Nam Yu, Chen Chen, Mojtaba Soltanalian, Niloofar Yousefi</div>
+      <div class="venue">ACL 2025 (Main); NeurIPS 2024 FITML Workshop <span class="badge">Oral</span></div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2410.10075" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/Kowsher/RoCoFT" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">TituLLMs: A Family of Bangla LLMs with Comprehensive Benchmarking</div>
+      <div class="authors">Shahriar Kabir Nahin, Rabindra Nath Nandi, Sagor Sarker, Quazi Sarwar Muhtaseem, <span class="me">Md Kowsher</span>, Apu Chandraw Shill, Md Ibrahim, Mehadi Hasan Menon, Tareq Al Muntasir, Firoj Alam</div>
+      <div class="venue">ACL 2025 (Findings)</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2502.11187" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/hishab-nlp/titulm" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">LLM-Mixer: Multiscale Mixing in LLMs for Time Series Forecasting</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Md Shohanur Islam Sobuj, Nusrat Jahan Prottasha, E. Alejandro Alanis, Ozlem Ozmen Garibay, Niloofar Yousefi</div>
+      <div class="venue">ACL 2025 TRL Workshop</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2410.11674" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/Kowsher/LLMMixer" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">Does Self-Attention Need Separate Weights in Transformers?</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Nusrat Jahan Prottasha, Chun-Nam Yu, Ozlem Ozmen Garibay, Niloofar Yousefi</div>
+      <div class="venue">NAACL 2025</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2412.00359" target="_blank" rel="noopener">paper</a>
+        <a href="https://huggingface.co/Kowsher/shared-weight-bert-based" target="_blank" rel="noopener">model</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting</div>
+      <div class="authors">Mohammad Jahid Ibna Basher, <span class="me">Md Kowsher</span>, Md Saiful Islam, Rabindra Nath Nandi, Nusrat Jahan Prottasha, Mehadi Hasan Menon, Tareq Al Muntasir, Shammur Absar Chowdhury, Firoj Alam, Niloofar Yousefi, Ozlem Ozmen Garibay</div>
+      <div class="venue">NAACL 2025</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2502.05729" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/hishab-nlp/BnTTS" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub" id="p-propulsion">
+      <div class="title">Propulsion: Steering LLM with Tiny Fine-Tuning</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Nusrat Jahan Prottasha, Prakash Bhat</div>
+      <div class="venue">COLING 2025 <span class="badge">Oral</span></div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2409.10927" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/Kowsher/Propulsion" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">Infinite Reservoir Transformer</div>
+      <div class="authors">Jia Xu, <span class="me">Md Kowsher</span></div>
+      <div class="venue">US Patent Application 18/780,055 (Pub. No. US20250200362A1)</div>
+      <div class="plinks">
+        <a href="https://patents.google.com/patent/US20250200362A1/en" target="_blank" rel="noopener">patent</a>
+      </div>
+    </div>
+
+    <h3 class="year">2024</h3>
+
+    <div class="pub">
+      <div class="title">Parameter-Efficient Fine-Tuning of Large Language Models using Semantic Knowledge Tuning</div>
+      <div class="authors">Nusrat Jahan Prottasha, Asif Mahmud, Md Shohanur Islam Sobuj, Prakash Bhat, <span class="me">Md Kowsher</span>, Niloofar Yousefi, Ozlem Ozmen Garibay</div>
+      <div class="venue">Scientific Reports (Nature Portfolio), 2024</div>
+      <div class="plinks">
+        <a href="https://github.com/Kowsher/SKTuning" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">Token Trails: Navigating Contextual Depths in Conversational AI with ChatLLM</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, R. Panditi, Nusrat Jahan Prottasha, Prakash Bhat, Anupam Kumar Bairagi, Mohammad Shamsul Arefin</div>
+      <div class="venue">NLDB 2024</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2404.02402" target="_blank" rel="noopener">paper</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">L-Tuning: Synchronized Label Tuning for Prompt and Prefix in Large Language Models</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Md Shohanur Islam Sobuj, Asif Mahmud, Nusrat Jahan Prottasha, Prakash Bhat</div>
+      <div class="venue">ICLR 2024 Tiny Papers</div>
+      <div class="plinks">
+        <a href="https://www.researchgate.net/publication/377080191" target="_blank" rel="noopener">paper</a>
+        <a href="https://github.com/Kowsher/L-Tuning/" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <h3 class="year">2023</h3>
+
+    <div class="pub">
+      <div class="title">Contrastive Learning for Universal Zero-Shot NLI with Cross-Lingual Sentence Embeddings</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Md Shohanur Islam Sobuj, Nusrat Jahan Prottasha, Mohammad Shamsul Arefin, Yasuhiko Morimoto</div>
+      <div class="venue">EMNLP 2023 Workshop (MRL)</div>
+      <div class="plinks">
+        <a href="https://aclanthology.org/2023.mrl-1.18.pdf" target="_blank" rel="noopener">paper</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">NAM: From Hybrid Dialogers to Neural Responders</div>
+      <div class="authors">João Luís Lins, Nikhil Reddy, Abdul Rafae Khan, <span class="me">Md Kowsher</span>, Abhijeet Gusain, Yeshwanth Reddy, Xuting Tang, Preet Jhanglani, Nusrat Zahan, Mengjiao Zhang, Yu Yu, Darshil Shah, Jia Xu</div>
+      <div class="venue">Alexa Prize SocialBot Grand Challenge 5 Proceedings (2nd place)</div>
+      <div class="plinks">
+        <a href="https://assets.amazon.science/63/27/5dd6b26e45b3810334ecb40238f8/nam-from-hybrid-dialogers-to-neural-responders.pdf" target="_blank" rel="noopener">paper</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">Impact Learning: A Learning Method from Feature's Impact and Competition</div>
+      <div class="authors">Nusrat Jahan Prottasha, Saydul Akbar Murad, <span class="me">Md Kowsher</span>, Apurba Adhikary, Sujit Biswas, Anupam Kumar Bairagi</div>
+      <div class="venue">Journal of Computational Science (Elsevier)</div>
+      <div class="plinks">
+        <a href="https://arxiv.org/abs/2211.02263" target="_blank" rel="noopener">paper</a>
+        <a href="https://pypi.org/project/ImpactLearning/" target="_blank" rel="noopener">code</a>
+      </div>
+    </div>
+
+    <h3 class="year">2022</h3>
+
+    <div class="pub">
+      <div class="title">Bangla-BERT: Transformer-Based Efficient Model for Transfer Learning and Language Understanding</div>
+      <div class="authors"><span class="me">Md Kowsher</span>, Abdullah As Sami, Nusrat Jahan Prottasha, Mohammad Shamsul Arefin, Pranab Kumar Dhar, Takeshi Koshiba</div>
+      <div class="venue">IEEE Access, 2022</div>
+      <div class="plinks">
+        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9852438" target="_blank" rel="noopener">paper</a>
+        <a href="https://huggingface.co/Kowsher/bangla-bert" target="_blank" rel="noopener">model</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="title">CARAN: A Context-Aware Recency-Based Attention Network for Point-of-Interest Recommendation</div>
+      <div class="authors">Md Billal Hossain, Mohammad Shamsul Arefin, Iqbal H. Sarker, <span class="me">Md Kowsher</span>, Pranab Kumar Dhar, Takeshi Koshiba</div>
+      <div class="venue">IEEE Access, 2022</div>
+      <div class="plinks">
+        <a href="https://doi.org/10.1109/ACCESS.2022.3161941" target="_blank" rel="noopener">paper</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Experience ================= -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div><span class="org">Meta</span> — Research Scientist, Menlo Park, CA</div>
+      <div class="when">Oct 2025 – Present</div>
+      <div class="what">Multimodal and agentic LLMs for Facebook Trust &amp; Safety, focusing on contextual understanding and reasoning.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Apple</span> — ML Research Intern, Cupertino, CA</div>
+      <div class="when">May 2026 – Aug 2026</div>
+      <div class="what">LLMs for knowledge-graph understanding and generation; fine-tuning and evaluating KG models.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Meta</span> — Multimodal LLM Intern, Menlo Park, CA</div>
+      <div class="when">May 2025 – Aug 2025</div>
+      <div class="what">Efficient training of multimodal LLMs; proposed the Universal Winning-Slice Hypothesis and SliceFine.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">UCF, Center for Research in Computer Vision</span> — Research Assistant</div>
+      <div class="when">Aug 2024 – Present</div>
+      <div class="what">Vision-and-language research with Prof. Chen Chen.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Nokia Bell Labs</span> — Research Scientist Intern, NJ</div>
+      <div class="when">Jun 2024 – Aug 2024</div>
+      <div class="what">Methods to make language models more accurate and efficient.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Stevens Institute of Technology</span> — Graduate Research Assistant</div>
+      <div class="when">Aug 2021 – Jun 2024</div>
+      <div class="what">Reservoir Transformer for NLP and long-horizon time series forecasting, with Prof. Jia Xu.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Amazon Alexa Prize</span> — Researcher (Team NAM)</div>
+      <div class="when">Nov 2022 – Sep 2023</div>
+      <div class="what">LLM-based conversational agents and conversation-driven image generation; 2nd place in SocialBot Grand Challenge 5.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Amazon</span> — Applied Scientist Intern, Seattle, WA</div>
+      <div class="when">May 2022 – Aug 2022</div>
+      <div class="what">Deep learning models for ML monitoring systems.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Hishab Ltd.</span> — AI Scientist, Dhaka</div>
+      <div class="when">Apr 2020 – Aug 2021</div>
+      <div class="what">Led a team building conversational agents and ASR for Bangla.</div>
+    </div>
+  </section>
+
+  <!-- ================= Education ================= -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entry">
+      <div><span class="org">University of Central Florida</span> — PhD, Computer Science</div>
+      <div class="when">2024 – Present</div>
+      <div class="what">Multimodal learning, computer vision and language. Advisor: Prof. Chen Chen. ORCGS Doctoral Fellow.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Stevens Institute of Technology</span> — MSc, Computer Science</div>
+      <div class="when">2021 – 2023</div>
+      <div class="what">NLP, LLMs and deep learning. Advisor: Prof. Jia Xu.</div>
+    </div>
+    <div class="entry">
+      <div><span class="org">Noakhali Science and Technology University</span> — BSc, Applied Mathematics</div>
+      <div class="when">2015 – 2019</div>
+    </div>
+  </section>
+
+  <!-- ================= Honors ================= -->
+  <section id="honors">
+    <h2>Honors &amp; Awards</h2>
+    <ul class="plain">
+      <li>NAACL Travel Award, 2025</li>
+      <li>ORCGS Doctoral Fellowship, University of Central Florida, 2024</li>
+      <li>2nd Place, Amazon Alexa Prize SocialBot Grand Challenge 5, 2023</li>
+      <li>Full Member, Sigma Xi, The Scientific Research Honor Society, 2023</li>
+      <li>Graduate Fellowship, Stevens Institute of Technology, 2021</li>
+      <li>Research Excellence Award, Global Innovation &amp; Excellence Awards, 2021</li>
+      <li>Best Paper Award, Int. Conf. on Cyber Security and Computer Science (Springer), 2020</li>
+      <li>Top Winning Award, Coronathon-19 Hackathon, Bangladesh, 2020</li>
+      <li>Best Paper Award, Int. Conf. on Computer, Communication, Chemical, Materials &amp; Electronic Engineering (IEEE), 2019</li>
+      <li>Champion, Robi r-ventures 2.0, Robi Axiata Limited, 2019</li>
+      <li>National BASIS ICT Award, 2019</li>
+    </ul>
+  </section>
+
+  <!-- ================= Service & Teaching ================= -->
+  <section id="service">
+    <h2>Service &amp; Teaching</h2>
+    <ul class="plain">
+      <li><b>Area Chair:</b> ACL Rolling Review (ARR), 2026</li>
+      <li><b>Reviewer:</b> NeurIPS 2026, ICML 2026, ICLR 2024–2025, ARR 2023–2025, IJCNN 2024, ICDM 2023</li>
+      <li><b>Volunteer Coordinator:</b> NAACL 2025</li>
+      <li><b>Teaching Assistant</b>, Stevens Institute of Technology: CS 541 Artificial Intelligence (Spring 2024); CS 583 Deep Learning (Fall 2022 – Fall 2023); CS 800 Special Research Problem (Spring 2023)</li>
+    </ul>
+  </section>
+
+  <footer>
+    Last updated October 2026 &nbsp;·&nbsp; ga.kowsher@gmail.com
+  </footer>
+</div>
+
+<script>
+  // News expand/collapse
+  (function () {
+    var list = document.getElementById('news-list');
+    var btn = document.getElementById('news-toggle');
+    if (!list.querySelector('.news-more')) { btn.style.display = 'none'; return; }
+    btn.addEventListener('click', function () {
+      var open = list.classList.toggle('news-expanded');
+      btn.textContent = open ? 'Show less ↑' : 'Show older news ↓';
+    });
+  })();
+
+  // Dark/light toggle (remembers choice when storage is available)
+  (function () {
+    var root = document.documentElement;
+    var KEY = 'theme';
+    try { var saved = localStorage.getItem(KEY); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
-
 </html>
