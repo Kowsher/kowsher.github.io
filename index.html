@@ -144,24 +144,16 @@
     .entry .what { grid-column: 1 / -1; color: var(--muted); font-size: 16px; }
 
 
-    /* Affiliations strip */
-    .affil { padding-top: 8px; }
-    .affil-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 14px; margin-top: 4px;
+    /* Logos */
+    .logo {
+      width: 34px; height: 34px; flex: 0 0 34px; object-fit: contain;
+      background: #ffffff; border: 1px solid var(--rule); border-radius: 8px; padding: 4px;
     }
-    .affil-item { text-align: center; }
-    .affil-logo {
-      height: 64px; display: flex; align-items: center; justify-content: center;
-      background: #ffffff; border: 1px solid var(--rule); border-radius: 10px; padding: 10px;
-    }
-    .affil-logo img { max-height: 42px; max-width: 92px; object-fit: contain; }
-    .affil-logo .fallback { display: none; font-weight: 700; color: #1f2328; font-size: 15px; line-height: 1.2; }
-    .affil-logo.noimg img { display: none; }
-    .affil-logo.noimg .fallback { display: block; }
-    .affil-name { font-size: 14px; font-weight: 600; margin-top: 6px; line-height: 1.25; }
-    .affil-role { font-size: 13px; color: var(--muted); line-height: 1.25; }
-    .affil-when { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .entry .head { display: flex; align-items: center; gap: 12px; }
+    .entry .what { padding-left: 46px; }
+    .role-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+    .role-line span { display: inline-flex; align-items: center; gap: 8px; }
+    .role-line .logo { width: 28px; height: 28px; flex-basis: 28px; padding: 3px; }
 
     ul.plain { margin: 0; padding-left: 20px; }
     ul.plain li { padding: 2px 0; }
@@ -177,7 +169,7 @@
       header.hero h1 { font-size: 32px; }
       ul.news li { grid-template-columns: 1fr; gap: 0; }
       .entry { grid-template-columns: 1fr; }
-      .affil-grid { grid-template-columns: repeat(2, 1fr); }
+      .entry .when { padding-left: 46px; }
     }
   </style>
 </head>
@@ -203,7 +195,7 @@
   <header class="hero">
     <div>
       <h1>Md Kowsher</h1>
-      <p class="role">Research Scientist, Meta &nbsp;·&nbsp; PhD Student, University of Central Florida</p>
+      <p class="role role-line"><span><img class="logo" src="assets/img/meta.webp" alt="Meta logo" loading="lazy" onerror="this.style.visibility='hidden'">Research Scientist, Meta</span><span><img class="logo" src="assets/img/ucf.png" alt="UCF logo" loading="lazy" onerror="this.style.visibility='hidden'">PhD Student, University of Central Florida</span></p>
       <p>
         I am a Research Scientist at <b>Meta</b>, where I work on multimodal and agentic LLMs for
         Facebook Trust &amp; Safety, focusing on contextual understanding and reasoning.
@@ -236,66 +228,13 @@
   </header>
 
 
-  <!-- ================= Affiliations ================= -->
-  <section class="affil" id="affiliations">
-    <div class="affil-grid">
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/meta.webp" alt="Meta logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Meta</span></div>
-        <div class="affil-name">Meta</div>
-        <div class="affil-role">Research Scientist · Intern</div>
-        <div class="affil-when">2025 – Present</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/apple.png" alt="Apple logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Apple</span></div>
-        <div class="affil-name">Apple</div>
-        <div class="affil-role">ML Research Intern</div>
-        <div class="affil-when">Summer 2026</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/ucf.png" alt="UCF logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">UCF</span></div>
-        <div class="affil-name">UCF · CRCV</div>
-        <div class="affil-role">PhD Student</div>
-        <div class="affil-when">2024 – Present</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/nokia.png" alt="Nokia Bell Labs logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Nokia Bell Labs</span></div>
-        <div class="affil-name">Nokia Bell Labs</div>
-        <div class="affil-role">Research Scientist Intern</div>
-        <div class="affil-when">Summer 2024</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/alexa.png" alt="Alexa Prize logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Alexa Prize</span></div>
-        <div class="affil-name">Amazon Alexa Prize</div>
-        <div class="affil-role">Researcher · 2nd Place</div>
-        <div class="affil-when">2022 – 2023</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/amazon.png" alt="Amazon logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Amazon</span></div>
-        <div class="affil-name">Amazon</div>
-        <div class="affil-role">Applied Scientist Intern</div>
-        <div class="affil-when">Summer 2022</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/stevens.png" alt="Stevens logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Stevens</span></div>
-        <div class="affil-name">Stevens Institute of Technology</div>
-        <div class="affil-role">MSc · Research Assistant</div>
-        <div class="affil-when">2021 – 2024</div>
-      </div>
-      <div class="affil-item">
-        <div class="affil-logo"><img src="assets/img/hishab.avif" alt="Hishab logo" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="fallback">Hishab</span></div>
-        <div class="affil-name">Hishab</div>
-        <div class="affil-role">AI Scientist</div>
-        <div class="affil-when">2020 – 2021</div>
-      </div>
-    </div>
-  </section>
 
   <!-- ================= News ================= -->
   <section id="news">
     <h2>News</h2>
     <ul class="news" id="news-list">
       <li><span class="date">Sep 2026</span><span><a href="#p-token">Token Hypothesis</a> accepted at <b>NeurIPS 2026</b>.</span></li>
-      <li><span class="date">Aug 2026</span><span><a href="#p-monkeyjump">Monkey Jump</a> accepted at <b>EMNLP 2026</b> (Main).</span></li>
+      <li><span class="date">Aug 2026</span><span><a href="#p-monkeyjump">Monkey Jump</a> accepted at <b>EMNLP 2026</b> (Main) as an <b>Oral</b>.</span></li>
       <li><span class="date">May 2026</span><span>Joined <b>Apple</b> (Cupertino) as an ML Research Intern for summer 2026.</span></li>
       <li><span class="date">May 2026</span><span><a href="#p-lime">LiME</a> (<b>Spotlight</b>) and <a href="#p-slicefine">SliceFine</a> accepted at <b>ICML 2026</b>.</span></li>
       <li><span class="date">2026</span><span>Serving as an <b>Area Chair</b> for ACL Rolling Review (ARR).</span></li>
@@ -351,10 +290,10 @@
       </div>
     </div>
 
-    <div class="pub" id="p-monkeyjump">
+    <div class="pub hl" id="p-monkeyjump">
       <div class="title">Monkey Jump: MoE-Style PEFT for Efficient Multi-Task Learning</div>
       <div class="authors">Nusrat Jahan Prottasha, <span class="me">Md Kowsher</span>, Chun-Nam Yu, Chen Chen, Ozlem Garibay</div>
-      <div class="venue">EMNLP 2026 (Main)</div>
+      <div class="venue">EMNLP 2026 (Main) <span class="badge">Oral</span></div>
       <div class="plinks">
         <a href="https://arxiv.org/abs/2601.06356" target="_blank" rel="noopener">paper</a>
         <a href="https://nusrat-prottasha.github.io/MonkeyJump/" target="_blank" rel="noopener">project</a>
@@ -540,47 +479,47 @@
     <h2>Experience</h2>
 
     <div class="entry">
-      <div><span class="org">Meta</span> — Research Scientist, Menlo Park, CA</div>
+      <div class="head"><img class="logo" src="assets/img/meta.webp" alt="Meta logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Meta</span> — Research Scientist, Menlo Park, CA</div></div>
       <div class="when">Oct 2025 – Present</div>
       <div class="what">Multimodal and agentic LLMs for Facebook Trust &amp; Safety, focusing on contextual understanding and reasoning.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Apple</span> — ML Research Intern, Cupertino, CA</div>
+      <div class="head"><img class="logo" src="assets/img/apple.png" alt="Apple logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Apple</span> — ML Research Intern, Cupertino, CA</div></div>
       <div class="when">May 2026 – Aug 2026</div>
       <div class="what">LLMs for knowledge-graph understanding and generation; fine-tuning and evaluating KG models.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Meta</span> — Multimodal LLM Intern, Menlo Park, CA</div>
+      <div class="head"><img class="logo" src="assets/img/meta.webp" alt="Meta logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Meta</span> — Multimodal LLM Intern, Menlo Park, CA</div></div>
       <div class="when">May 2025 – Aug 2025</div>
       <div class="what">Efficient training of multimodal LLMs; proposed the Universal Winning-Slice Hypothesis and SliceFine.</div>
     </div>
     <div class="entry">
-      <div><span class="org">UCF, Center for Research in Computer Vision</span> — Research Assistant</div>
+      <div class="head"><img class="logo" src="assets/img/ucf.png" alt="UCF logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">UCF, Center for Research in Computer Vision</span> — Research Assistant</div></div>
       <div class="when">Aug 2024 – Present</div>
       <div class="what">Vision-and-language research with Prof. Chen Chen.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Nokia Bell Labs</span> — Research Scientist Intern, NJ</div>
+      <div class="head"><img class="logo" src="assets/img/nokia.png" alt="Nokia Bell Labs logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Nokia Bell Labs</span> — Research Scientist Intern, NJ</div></div>
       <div class="when">Jun 2024 – Aug 2024</div>
       <div class="what">Methods to make language models more accurate and efficient.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Stevens Institute of Technology</span> — Graduate Research Assistant</div>
+      <div class="head"><img class="logo" src="assets/img/stevens.png" alt="Stevens Institute of Technology logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Stevens Institute of Technology</span> — Graduate Research Assistant</div></div>
       <div class="when">Aug 2021 – Jun 2024</div>
       <div class="what">Reservoir Transformer for NLP and long-horizon time series forecasting, with Prof. Jia Xu.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Amazon Alexa Prize</span> — Researcher (Team NAM)</div>
+      <div class="head"><img class="logo" src="assets/img/alexa.png" alt="Amazon Alexa Prize logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Amazon Alexa Prize</span> — Researcher (Team NAM)</div></div>
       <div class="when">Nov 2022 – Sep 2023</div>
       <div class="what">LLM-based conversational agents and conversation-driven image generation; 2nd place in SocialBot Grand Challenge 5.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Amazon</span> — Applied Scientist Intern, Seattle, WA</div>
+      <div class="head"><img class="logo" src="assets/img/amazon.png" alt="Amazon logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Amazon</span> — Applied Scientist Intern, Seattle, WA</div></div>
       <div class="when">May 2022 – Aug 2022</div>
       <div class="what">Deep learning models for ML monitoring systems.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Hishab Ltd.</span> — AI Scientist, Dhaka</div>
+      <div class="head"><img class="logo" src="assets/img/hishab.avif" alt="Hishab Ltd. logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Hishab Ltd.</span> — AI Scientist, Dhaka</div></div>
       <div class="when">Apr 2020 – Aug 2021</div>
       <div class="what">Led a team building conversational agents and ASR for Bangla.</div>
     </div>
@@ -590,17 +529,17 @@
   <section id="education">
     <h2>Education</h2>
     <div class="entry">
-      <div><span class="org">University of Central Florida</span> — PhD, Computer Science</div>
+      <div class="head"><img class="logo" src="assets/img/ucf.png" alt="University of Central Florida logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">University of Central Florida</span> — PhD, Computer Science</div></div>
       <div class="when">2024 – Present</div>
       <div class="what">Multimodal learning, computer vision and language. Advisor: Prof. Chen Chen. ORCGS Doctoral Fellow.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Stevens Institute of Technology</span> — MSc, Computer Science</div>
+      <div class="head"><img class="logo" src="assets/img/stevens.png" alt="Stevens Institute of Technology logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Stevens Institute of Technology</span> — MSc, Computer Science</div></div>
       <div class="when">2021 – 2023</div>
       <div class="what">NLP, LLMs and deep learning. Advisor: Prof. Jia Xu.</div>
     </div>
     <div class="entry">
-      <div><span class="org">Noakhali Science and Technology University</span> — BSc, Applied Mathematics</div>
+      <div class="head"><img class="logo" src="assets/img/nstu.png" alt="Noakhali Science and Technology University logo" loading="lazy" onerror="this.style.visibility='hidden'"><div><span class="org">Noakhali Science and Technology University</span> — BSc, Applied Mathematics</div></div>
       <div class="when">2015 – 2019</div>
     </div>
   </section>
